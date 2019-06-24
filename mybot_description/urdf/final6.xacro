@@ -1,0 +1,2389 @@
+<?xml version='1.0'?>
+
+<robot name="final6" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:property name="cameraSize" value="0.05"/>
+  <xacro:property name="cameraMass" value="0.1"/>
+
+  <xacro:include filename="$(find mybot_description)/urdf/final6.gazebo" />
+  <xacro:include filename="$(find mybot_description)/urdf/materials.xacro" />
+  <xacro:include filename="$(find mybot_description)/urdf/macros.xacro" />
+
+  <link name="odom" />
+
+
+  <link
+    name="chassis_link">
+    <inertial>
+      <origin
+        xyz="0.061257 0.14486 0.18004"
+        rpy="0 0 0" />
+      <mass
+        value="10" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/chassis_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/chassis_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+   <joint
+    name="odom_joint"
+    type="fixed">
+    <parent
+      link="odom" />
+    <child
+      link="chassis_link" />
+  </joint>
+
+
+
+
+
+<!--     ///////////////////////////////////////////////// -->
+
+  <link
+    name="lidar_Link">
+    <inertial>
+      <origin
+        xyz="1.8603E-06 0.00017621 -0.035998"
+        rpy="0 0 0" />
+      <mass
+        value="0.61592" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/lidar_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/lidar_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+<!--  /////////////////////////// -->
+
+  <joint
+    name="lidar_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0036509 -0.18022 0.18934"
+      rpy="3.1416 6.123E-17 1.5708" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="lidar_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+
+  <!--     ///////////////////////////////////////////////// -->
+
+
+
+
+  <link
+    name="coupler_front_left_Link">
+    <inertial>
+      <origin
+        xyz="-1.0825E-10 6.7682E-10 0.012843"
+        rpy="0 0 0" />
+      <mass
+        value="5" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/coupler_front_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/coupler_front_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="coupler_front_left_joint"
+    type="continuous">
+    <origin
+      xyz="-0.026833 -0.27457 0.11334"
+      rpy="1.5708 -0.42074 2.7398E-17" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="coupler_front_left_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="coupler_front_right_Link">
+    <inertial>
+      <origin
+        xyz="-1.0825E-10 6.7682E-10 -0.0061569"
+        rpy="0 0 0" />
+      <mass
+        value="5" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/coupler_front_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/coupler_front_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="coupler_front_right_joint"
+    type="continuous">
+    <origin
+      xyz="-0.026833 -0.063569 0.11334"
+      rpy="1.5708 0.34429 -3.1416" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="coupler_front_right_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="coupler_back_left_Link">
+    <inertial>
+      <origin
+        xyz="-1.0825E-10 6.7682E-10 0.012843"
+        rpy="0 0 0" />
+      <mass
+        value="5" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/coupler_back_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/coupler_back_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="coupler_back_left_joint"
+    type="continuous">
+    <origin
+      xyz="0.14317 -0.27457 0.11334"
+      rpy="-1.5708 -1.1476 3.1416" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="coupler_back_left_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="coupler_back_right_Link">
+    <inertial>
+      <origin
+        xyz="-1.0825E-10 6.7682E-10 -0.0061569"
+        rpy="0 0 0" />
+      <mass
+        value="5" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/coupler_back_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/coupler_back_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="coupler_back_right_joint"
+    type="continuous">
+    <origin
+      xyz="0.14317 -0.063569 0.11334"
+      rpy="-1.5708 1.3905 -3.3585E-16" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="coupler_back_right_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="wheel_front_left_Link">
+    <inertial>
+      <origin
+        xyz="-0.018434 -3.0784E-14 -4.4936E-14"
+        rpy="0 0 0" />
+      <mass
+        value="5" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/wheel_front_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/wheel_front_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_front_left_joint"
+    type="continuous">
+    <origin
+      xyz="-0.026833 -0.29057 0.11334"
+      rpy="2.7769 6.123E-17 1.5708" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="wheel_front_left_Link" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+  <link
+    name="roller1_front_left_Link">
+    <inertial>
+      <origin
+        xyz="-0.012915 0.026292 -0.0031156"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller1_front_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller1_front_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller1_front_left_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="-1.604 0.55535 0.58779" />
+    <parent
+      link="wheel_front_left_Link" />
+    <child
+      link="roller1_front_left_Link" />
+    <axis
+      xyz="-0.70711 0.42011 0.56878" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller2_front_left_Link">
+    <inertial>
+      <origin
+        xyz="-0.012915 0.026292 -0.0031156"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller2_front_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller2_front_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller2_front_left_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="-2.5846 0.78383 -0.055989" />
+    <parent
+      link="wheel_front_left_Link" />
+    <child
+      link="roller2_front_left_Link" />
+    <axis
+      xyz="-0.70711 0.42011 0.56878" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller3_front_left_Link">
+    <inertial>
+      <origin
+        xyz="-0.012915 0.026292 -0.0031156"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller3_front_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller3_front_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller3_front_left_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="2.7705 0.49064 -0.6407" />
+    <parent
+      link="wheel_front_left_Link" />
+    <child
+      link="roller3_front_left_Link" />
+    <axis
+      xyz="-0.70711 0.42011 0.56878" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller4_front_left_Link">
+    <inertial>
+      <origin
+        xyz="-0.012915 0.026292 -0.0031156"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller4_front_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller4_front_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller4_front_left_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="2.1673 -0.039642 -0.78461" />
+    <parent
+      link="wheel_front_left_Link" />
+    <child
+      link="roller4_front_left_Link" />
+    <axis
+      xyz="-0.70711 0.42011 0.56878" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller5_front_left_Link">
+    <inertial>
+      <origin
+        xyz="-0.012915 0.026292 -0.0031156"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller5_front_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller5_front_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller5_front_left_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="1.5376 -0.55535 -0.58779" />
+    <parent
+      link="wheel_front_left_Link" />
+    <child
+      link="roller5_front_left_Link" />
+    <axis
+      xyz="-0.70711 0.42011 0.56878" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller6_front_left_Link">
+    <inertial>
+      <origin
+        xyz="-0.012915 0.026292 -0.0031156"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller6_front_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller6_front_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller6_front_left_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0.55695 -0.78383 0.055989" />
+    <parent
+      link="wheel_front_left_Link" />
+    <child
+      link="roller6_front_left_Link" />
+    <axis
+      xyz="-0.70711 0.42011 0.56878" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller7_front_left_Link">
+    <inertial>
+      <origin
+        xyz="-0.012915 0.026292 -0.0031156"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller7_front_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller7_front_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller7_front_left_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="-0.37105 -0.49064 0.6407" />
+    <parent
+      link="wheel_front_left_Link" />
+    <child
+      link="roller7_front_left_Link" />
+    <axis
+      xyz="-0.70711 0.42011 0.56878" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller8_front_left_Link">
+    <inertial>
+      <origin
+        xyz="-0.012915 0.026292 -0.0031156"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller8_front_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller8_front_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller8_front_left_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="-0.9743 0.039642 0.78461" />
+    <parent
+      link="wheel_front_left_Link" />
+    <child
+      link="roller8_front_left_Link" />
+    <axis
+      xyz="-0.70711 0.42011 0.56878" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wheel_front_right_Link">
+    <inertial>
+      <origin
+        xyz="0.029443 -0.029443 5.0827E-16"
+        rpy="0 0 0" />
+      <mass
+        value="5" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/wheel_front_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89412 0.91373 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/wheel_front_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_front_right_joint"
+    type="continuous">
+    <origin
+      xyz="-0.026833 -0.0065693 0.11334"
+      rpy="2.0401 -0.72831 -1.8963" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="wheel_front_right_Link" />
+    <axis
+      xyz="0.70711 -0.70711 0" />
+  </joint>
+  <link
+    name="roller1_front_right_Link">
+    <inertial>
+      <origin
+        xyz="-0.010576 0.02387 -0.0085875"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller1_front_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller1_front_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller1_front_right_joint"
+    type="revolute">
+    <origin
+      xyz="0.01862 -0.01862 0"
+      rpy="2.0961 -0.5236 2.9717" />
+    <parent
+      link="wheel_front_right_Link" />
+    <child
+      link="roller1_front_right_Link" />
+    <axis
+      xyz="-0.70711 0.063644 -0.70424" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller2_front_right_Link">
+    <inertial>
+      <origin
+        xyz="-0.010576 0.02387 -0.0085875"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller2_front_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller2_front_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller2_front_right_joint"
+    type="revolute">
+    <origin
+      xyz="0.01862 -0.01862 0"
+      rpy="1.4807 -6.4011E-15 -3.1416" />
+    <parent
+      link="wheel_front_right_Link" />
+    <child
+      link="roller2_front_right_Link" />
+    <axis
+      xyz="-0.70711 0.063644 -0.70424" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller3_front_right_Link">
+    <inertial>
+      <origin
+        xyz="-0.010576 0.02387 -0.0085875"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller3_front_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller3_front_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller3_front_right_joint"
+    type="revolute">
+    <origin
+      xyz="0.01862 -0.01862 0"
+      rpy="0.86519 0.5236 2.9717" />
+    <parent
+      link="wheel_front_right_Link" />
+    <child
+      link="roller3_front_right_Link" />
+    <axis
+      xyz="-0.70711 0.063644 -0.70424" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller4_front_right_Link">
+    <inertial>
+      <origin
+        xyz="-0.010576 0.02387 -0.0085875"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller4_front_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller4_front_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller4_front_right_joint"
+    type="revolute">
+    <origin
+      xyz="0.01862 -0.01862 0"
+      rpy="-0.090129 0.7854 2.3562" />
+    <parent
+      link="wheel_front_right_Link" />
+    <child
+      link="roller4_front_right_Link" />
+    <axis
+      xyz="-0.70711 0.063644 -0.70424" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller5_front_right_Link">
+    <inertial>
+      <origin
+        xyz="-0.010576 0.02387 -0.0085875"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller5_front_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller5_front_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller5_front_right_joint"
+    type="revolute">
+    <origin
+      xyz="0.01862 -0.01862 0"
+      rpy="-1.0454 0.5236 1.7407" />
+    <parent
+      link="wheel_front_right_Link" />
+    <child
+      link="roller5_front_right_Link" />
+    <axis
+      xyz="-0.70711 0.063644 -0.70424" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller6_front_right_Link">
+    <inertial>
+      <origin
+        xyz="-0.010576 0.02387 -0.0085875"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller6_front_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller6_front_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller6_front_right_joint"
+    type="revolute">
+    <origin
+      xyz="0.01862 -0.01862 0"
+      rpy="-1.6609 -3.7815E-16 1.5708" />
+    <parent
+      link="wheel_front_right_Link" />
+    <child
+      link="roller6_front_right_Link" />
+    <axis
+      xyz="-0.70711 0.063644 -0.70424" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller7_front_right_Link">
+    <inertial>
+      <origin
+        xyz="-0.010576 0.02387 -0.0085875"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller7_front_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller7_front_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller7_front_right_joint"
+    type="revolute">
+    <origin
+      xyz="0.01862 -0.01862 0"
+      rpy="-2.2764 -0.5236 1.7407" />
+    <parent
+      link="wheel_front_right_Link" />
+    <child
+      link="roller7_front_right_Link" />
+    <axis
+      xyz="-0.70711 0.063644 -0.70424" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller8_front_right_Link">
+    <inertial>
+      <origin
+        xyz="-0.010576 0.02387 -0.0085875"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller8_front_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller8_front_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller8_front_right_joint"
+    type="revolute">
+    <origin
+      xyz="0.01862 -0.01862 0"
+      rpy="3.0515 -0.7854 2.3562" />
+    <parent
+      link="wheel_front_right_Link" />
+    <child
+      link="roller8_front_right_Link" />
+    <axis
+      xyz="-0.70711 0.063644 -0.70424" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wheel_back_left_Link">
+    <inertial>
+      <origin
+        xyz="-0.029247 0.029247 -8.0491E-16"
+        rpy="0 0 0" />
+      <mass
+        value="5" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/wheel_back_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89412 0.91373 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/wheel_back_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_back_left_joint"
+    type="continuous">
+    <origin
+      xyz="0.14317 -0.26757 0.11334"
+      rpy="-0.30836 0.29467 2.3101" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="wheel_back_left_Link" />
+    <axis
+      xyz="-0.70711 0.70711 0" />
+  </joint>
+  <link
+    name="roller1_back_left_Link">
+    <inertial>
+      <origin
+        xyz="0.010841 0.021942 0.012743"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller1_back_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller1_back_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller1_back_left_joint"
+    type="revolute">
+    <origin
+      xyz="-0.018653 0.018653 0"
+      rpy="2.0961 -0.5236 2.9717" />
+    <parent
+      link="wheel_back_left_Link" />
+    <child
+      link="roller1_back_left_Link" />
+    <axis
+      xyz="0.70711 -0.063644 0.70424" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller2_back_left_Link">
+    <inertial>
+      <origin
+        xyz="0.010841 0.021942 0.012743"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller2_back_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller2_back_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller2_back_left_joint"
+    type="revolute">
+    <origin
+      xyz="-0.018653 0.018653 0"
+      rpy="3.0515 -0.7854 2.3562" />
+    <parent
+      link="wheel_back_left_Link" />
+    <child
+      link="roller2_back_left_Link" />
+    <axis
+      xyz="0.70711 -0.063644 0.70424" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller3_back_left_Link">
+    <inertial>
+      <origin
+        xyz="0.010841 0.021942 0.012743"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller3_back_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller3_back_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller3_back_left_joint"
+    type="revolute">
+    <origin
+      xyz="-0.018653 0.018653 0"
+      rpy="-2.2764 -0.5236 1.7407" />
+    <parent
+      link="wheel_back_left_Link" />
+    <child
+      link="roller3_back_left_Link" />
+    <axis
+      xyz="0.70711 -0.063644 0.70424" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller4_back_left_Link">
+    <inertial>
+      <origin
+        xyz="0.010841 0.021942 0.012743"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller4_back_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller4_back_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller4_back_left_joint"
+    type="revolute">
+    <origin
+      xyz="-0.018653 0.018653 0"
+      rpy="-1.6609 2.6076E-15 1.5708" />
+    <parent
+      link="wheel_back_left_Link" />
+    <child
+      link="roller4_back_left_Link" />
+    <axis
+      xyz="0.70711 -0.063644 0.70424" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller5_back_left_Link">
+    <inertial>
+      <origin
+        xyz="0.010841 0.021942 0.012743"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller5_back_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller5_back_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller5_back_left_joint"
+    type="revolute">
+    <origin
+      xyz="-0.018653 0.018653 0"
+      rpy="-1.0454 0.5236 1.7407" />
+    <parent
+      link="wheel_back_left_Link" />
+    <child
+      link="roller5_back_left_Link" />
+    <axis
+      xyz="0.70711 -0.063644 0.70424" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller6_back_left_Link">
+    <inertial>
+      <origin
+        xyz="0.010841 0.021942 0.012743"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller6_back_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller6_back_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller6_back_left_joint"
+    type="revolute">
+    <origin
+      xyz="-0.018653 0.018653 0"
+      rpy="-0.090129 0.7854 2.3562" />
+    <parent
+      link="wheel_back_left_Link" />
+    <child
+      link="roller6_back_left_Link" />
+    <axis
+      xyz="0.70711 -0.063644 0.70424" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller7_back_left_Link">
+    <inertial>
+      <origin
+        xyz="0.010841 0.021942 0.012743"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller7_back_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller7_back_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller7_back_left_joint"
+    type="revolute">
+    <origin
+      xyz="-0.018653 0.018653 0"
+      rpy="0.86519 0.5236 2.9717" />
+    <parent
+      link="wheel_back_left_Link" />
+    <child
+      link="roller7_back_left_Link" />
+    <axis
+      xyz="0.70711 -0.063644 0.70424" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller8_back_left_Link">
+    <inertial>
+      <origin
+        xyz="0.010841 0.021942 0.012743"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller8_back_left_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller8_back_left_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller8_back_left_joint"
+    type="revolute">
+    <origin
+      xyz="-0.018653 0.018653 0"
+      rpy="1.4807 -7.9395E-15 -3.1416" />
+    <parent
+      link="wheel_back_left_Link" />
+    <child
+      link="roller8_back_left_Link" />
+    <axis
+      xyz="0.70711 -0.063644 0.70424" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wheel_back_right_Link">
+    <inertial>
+      <origin
+        xyz="0.01816 2.8921E-14 -2.5727E-10"
+        rpy="0 0 0" />
+      <mass
+        value="5" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/wheel_back_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/wheel_back_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_back_right_joint"
+    type="continuous">
+    <origin
+      xyz="0.14317 -0.029975 0.11334"
+      rpy="0.44213 -1.2805E-08 -1.5708" />
+    <parent
+      link="chassis_link" />
+    <child
+      link="wheel_back_right_Link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="roller1_back_right_Link">
+    <inertial>
+      <origin
+        xyz="0.012961 0.010919 -0.02393"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller1_back_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller1_back_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller1_back_right_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="2.8224 0.5236 -0.61548" />
+    <parent
+      link="wheel_back_right_Link" />
+    <child
+      link="roller1_back_right_Link" />
+    <axis
+      xyz="0.70711 -0.42011 -0.56878" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller2_back_right_Link">
+    <inertial>
+      <origin
+        xyz="0.012961 0.010919 -0.02393"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller2_back_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller2_back_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller2_back_right_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="-2.5054 0.7854 -8.1645E-15" />
+    <parent
+      link="wheel_back_right_Link" />
+    <child
+      link="roller2_back_right_Link" />
+    <axis
+      xyz="0.70711 -0.42011 -0.56878" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller3_back_right_Link">
+    <inertial>
+      <origin
+        xyz="0.012961 0.010919 -0.02393"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller3_back_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller3_back_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller3_back_right_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="-1.5501 0.5236 0.61548" />
+    <parent
+      link="wheel_back_right_Link" />
+    <child
+      link="roller3_back_right_Link" />
+    <axis
+      xyz="0.70711 -0.42011 -0.56878" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller4_back_right_Link">
+    <inertial>
+      <origin
+        xyz="0.012961 0.010919 -0.02393"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller4_back_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller4_back_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller4_back_right_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="-0.93462 1.0018E-08 0.7854" />
+    <parent
+      link="wheel_back_right_Link" />
+    <child
+      link="roller4_back_right_Link" />
+    <axis
+      xyz="0.70711 -0.42011 -0.56878" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller5_back_right_Link">
+    <inertial>
+      <origin
+        xyz="0.012961 0.010919 -0.02393"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller5_back_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller5_back_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller5_back_right_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="-0.31914 -0.5236 0.61548" />
+    <parent
+      link="wheel_back_right_Link" />
+    <child
+      link="roller5_back_right_Link" />
+    <axis
+      xyz="0.70711 -0.42011 -0.56878" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller6_back_right_Link">
+    <inertial>
+      <origin
+        xyz="0.012961 0.010919 -0.02393"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller6_back_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller6_back_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller6_back_right_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0.63617 -0.7854 1.2561E-15" />
+    <parent
+      link="wheel_back_right_Link" />
+    <child
+      link="roller6_back_right_Link" />
+    <axis
+      xyz="0.70711 -0.42011 -0.56878" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller7_back_right_Link">
+    <inertial>
+      <origin
+        xyz="0.012961 0.010919 -0.02393"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller7_back_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller7_back_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller7_back_right_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="1.5915 -0.5236 -0.61548" />
+    <parent
+      link="wheel_back_right_Link" />
+    <child
+      link="roller7_back_right_Link" />
+    <axis
+      xyz="0.70711 -0.42011 -0.56878" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="roller8_back_right_Link">
+    <inertial>
+      <origin
+        xyz="0.012961 0.010919 -0.02393"
+        rpy="0 0 0" />
+      <mass
+        value="0.002598" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller8_back_right_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://final6/meshes/roller8_back_right_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="roller8_back_right_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="2.207 1.0018E-08 -0.7854" />
+    <parent
+      link="wheel_back_right_Link" />
+    <child
+      link="roller8_back_right_Link" />
+    <axis
+      xyz="0.70711 -0.42011 -0.56878" />
+    <limit
+      effort="0"
+      velocity="0" />
+  </joint>
+
+<!--
+  <link name="camera">
+    <collision>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <geometry>
+        <box size="${cameraSize} ${cameraSize} ${cameraSize}"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <geometry>
+        <box size="${cameraSize} ${cameraSize} ${cameraSize}"/>
+      </geometry>
+      <material name="green"/>
+    </visual>
+
+    <inertial>
+      <mass value="${cameraMass}" />
+      <origin xyz="0 0 1" rpy="0 0 0"/>
+      <box_inertia m="${cameraMass}" x="${cameraSize}" y="${cameraSize}" z="${cameraSize}" />
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+    </inertial>
+  </link>
+
+  <joint name="camera_joint" type="fixed">
+    <axis xyz="0 0 1" />
+    <origin xyz=".2 0 0" rpy="0 0 0"/>
+    <parent link="chassis_link"/>
+    <child link="camera"/>
+  </joint>
+
+  
+  -->
+
+ 
+
+</robot>

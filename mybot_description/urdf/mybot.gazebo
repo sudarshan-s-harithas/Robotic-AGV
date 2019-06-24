@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<robot>
+
+  <!--gazebo reference="left_wheel_hinge">
+      <mu1 value="10000.0" />
+      <mu2 value="10000.0" />
+      <kp value="100000.0" />
+      <kd value="0.00001" />
+      <maxVel value="1.0" />
+      <minDepth value="0.0001" />
+  </gazebo>    
+  <gazebo reference="right_wheel_hinge">
+      <mu1 value="10000.0" />
+      <mu2 value="10000.0" />
+      <kp value="100000.0" />
+      <kd value="0.00001" />
+      <maxVel value="1.0" />
+      <minDepth value="0.0001" />
+  </gazebo-->    
+
+ <gazebo>
+    <plugin name="differential_drive_controller_1" filename="libgazebo_ros_diff_drive.so">
+      <legacyMode>false</legacyMode>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>10</updateRate>
+      <leftJoint>wheel_front_left_joint</leftJoint>
+      <rightJoint>wheel_front_right_joint</rightJoint>
+      <wheelSeparation>0.4</wheelSeparation>
+      <wheelDiameter>0.2</wheelDiameter>
+      <wheelAcceleration>0</wheelAcceleration>
+      <torque>10</torque>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>chassis_link</robotBaseFrame>
+    </plugin>
+  </gazebo>
+
+   <gazebo>
+    <plugin name="differential_drive_controller_2" filename="libgazebo_ros_diff_drive.so">
+      <legacyMode>false</legacyMode>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>10</updateRate>
+      <leftJoint>wheel_front_left_joint</leftJoint>
+      <rightJoint>wheel_front_right_joint</rightJoint>
+      <wheelSeparation>0.4</wheelSeparation>
+      <wheelDiameter>0.2</wheelDiameter>
+      <wheelAcceleration>0</wheelAcceleration>
+      <torque>10</torque>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>chassis_link</robotBaseFrame>
+    </plugin>
+  </gazebo>
+
+
+
+  <gazebo reference="camera">
+    <material>Gazebo/Green</material>
+    <sensor type="camera" name="camera1">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>mybot/camera1</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+
+
+ <gazebo reference="sharp1">
+   <material>Gazebo/Blue</material>
+    <turnGravityOff>false</turnGravityOff>
+   
+ <sensor name="sharp_sensor1" type="ray">
+   
+   <pose>0.025 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>100</update_rate>
+      <ray>
+  
+      <scan>
+          <horizontal>
+            <samples>700</samples>
+            <resolution>1</resolution>
+            <min_angle>-2.170796</min_angle>
+            <max_angle>2.170796</max_angle>
+          </horizontal>
+        </scan>
+
+        <range>
+          <min>0.1</min>
+          <max>30</max>
+          <resolution>0.01</resolution>
+        </range>
+
+      </ray>
+
+      <plugin filename="libgazebo_ros_laser.so" name="gazebo_ros_head_hokuyo_controller">
+        <topicName>/scan1</topicName>
+        <frameName>sharp1</frameName>
+      </plugin>
+   </sensor>
+  </gazebo>
+
+
+
+  
+  <gazebo reference="chassis_link">
+    <material>Gazebo/Blue</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+  <gazebo reference="wheel_back_right_Link">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+  <gazebo reference="wheel_back_left_Link">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+  <gazebo reference="wheel_front_left_Link">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+  <gazebo reference="wheel_front_right_Link">
+    <material>Gazebo/Black</material>
+    <turnGravityOff>false</turnGravityOff>
+  </gazebo>
+
+
+  
+</robot>
