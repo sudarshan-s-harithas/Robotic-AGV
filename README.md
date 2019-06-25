@@ -6,5 +6,7 @@ The URDF (Universal Robot Description Format) model is a collection of ﬁles th
 
 Here is the guide to run the SLAM Simulation on ROS 
 
-1. **roslaunch mybot_gazebo mybot_world.launch**  
+1. **roslaunch mybot_gazebo final6_world.launch**  
     The Gazebo world opens 
+2. **roslaunch mybot_navigation final6_gmapping_demo.launch**
+    
