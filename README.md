@@ -14,7 +14,23 @@ Here is the guide to run the SLAM Simulation of the Robotic AGV  on ROS
     Launch RVIZ and obtain Laser scan data and map in Rviz
 
 4. **roslaunch mybot_navigation simple_tele_top.launch**
-        launch teletop and move the robot through the world and generate the complete map
+        launch teletop and move the robot through the world and generate the complete map 
+        using the commands 
+        
+        Control Your Robot!
+---------------------------
+Moving around:
+   u    i    o
+   j    k    l
+   m    ,    .
+q/z : increase/decrease max speeds by 10%
+w/x : increase/decrease only linear speed by 10%
+e/c : increase/decrease only angular speed by 10%
+space key, k : force stop
+anything else : stop smoothly
+CTRL-C to quit
+
+
         
 5. **rosrun map_server map_saver -f ~/{ws_name}/src/mybot_navigation/{add_remanaing_path}**
   Save the map using the above command 
