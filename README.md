@@ -19,5 +19,5 @@ Here is the guide to run the SLAM Simulation of the Robotic AGV  on ROS
 5. **rosrun map_server map_saver -f ~/{ws_name}/src/mybot_navigation/{add_remanaing_path}**
   Save the map using the above command 
 
-The locomotion of the Robot can be controlled remotely using mobile phone using bletooth refer to the Robotic AGV pdf for the details.
+The locomotion of the Robot can be controlled remotely using mobile phone using bletooth refer to the Robotic AGV.pdf for the details.
     
