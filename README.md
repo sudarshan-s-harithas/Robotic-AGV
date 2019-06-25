@@ -10,7 +10,7 @@ Here is the guide to run the SLAM Simulation of the Robotic AGV  on ROS
     The Gazebo world opens 
 2. **roslaunch mybot_navigation final6_gmapping_demo.launch**
     Launch Gmapping SLAM
-3. **roslaunch mybot_description final6_rviz_gmapping.launch
+3. **roslaunch mybot_description final6_rviz_gmapping.launch**
     Launch RVIZ and obtain Laser scan data and map in Rviz
 
 4. **roslaunch mybot_navigation simple_tele_top.launch**
